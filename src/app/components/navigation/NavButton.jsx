@@ -55,7 +55,7 @@ export const NavButton=({x,y,label,link,icon,newTab})=>{
         name={label}
         >
 
-            <span className= "relative w-14 h-14 p-4 animate-spin-rslow  group-hover:pause group-hover:animate-stop" >{getIcon(icon)}
+            <span className= "relative w-14 h-14 p-4 animate-spin-rslow group-hover:pause" >{getIcon(icon)}
             {isHovered && (
             <span className="absolute px-2 py-1 text-sm left-full mx-2 top-1/2 -translate-y-1/2 
                 bg-background rounded-md text-foreground shadow-lg whitespace-nowrap">
