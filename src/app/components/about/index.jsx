@@ -29,7 +29,16 @@ export const AboutDetails=()=>{
                  1+ years of experience
                 </div>
             </ItemLayout>
-        
+            <ItemLayout className={"col-span-6 !p-0"}>
+                <img className="w-full h-auto" loading="lazy" 
+                // src="https://github-readme-stats.vercel.app/api?username=GitHubA496&show_icons=true&theme=transparent&hide_border=true&title_color=fefe5b&text_color=ffffff"
+                src="https://github-readme-streak-stats.herokuapp.com?user=GitHubA496"
+                alt="GitHub Stats" /> 
+                {/* <a href="https://git.io/streak-stats"><img src= alt="GitHub Streak" /></a> */}
+            </ItemLayout> 
+            <ItemLayout className={"col-span-full !p-4"}>
+                <img className="w-full h-auto" loading="lazy" src="https://skillicons.dev/icons?i=html,css,react,nextjs,tailwind,javascript,typescript,python,git,github,docker,postgresql,mongodb,mysql,django,tensorflow,pytorch,express,nodejs,linux," alt="GitHub Stats" /> 
+            </ItemLayout> 
         </div>
     </section> 
     )

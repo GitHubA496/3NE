@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <Image src={bg} alt="background" className="h-full w-full fixed -z-50 top-0 left-0 object-cover object-center opacity-25" />
     
-    <div className="flex items-center justify-center fixed top-20 left-0 h-screen">
+    <div className="flex items-center justify-center fixed top-20 left-0 h-screen w-screen">
 
     <RenderModels>
         <Hat />
