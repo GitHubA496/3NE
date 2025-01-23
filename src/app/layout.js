@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
 import { FirefilesBackground } from "./components/FirefilesBackground";
+import { Sound } from "./components/Sound";
 
 const inter = Inter({ subsets: ["latin"],
   subsets: ["latin"],
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={clsx(inter.variable,"bg-background text-foreground font-inter")}>{children}
         <FirefilesBackground />
+        <Sound />
       </body>
     </html>
   );

@@ -2,7 +2,7 @@ import clsx from "clsx"
 
 const ItemLayout = ({children,className}) =>{
     return(
-        <div className={clsx("custom-background p-4 sm:p-8 rounded-xl flex items-center justify-center", className)}>
+        <div className={clsx("bg-background/20 border border-solid border-accent/30 backdrop-blur-[6px] shadow-glass-inset hover:shadow-glass-sm p-4 sm:p-8 rounded-xl flex items-center justify-center", className)}>
             {children}
         </div>
     )

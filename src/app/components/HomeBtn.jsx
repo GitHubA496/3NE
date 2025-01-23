@@ -7,12 +7,12 @@ export const HomeBtn = () => {
     
     const [isHovered, setIsHovered] = useState(false);
     return (
-        <>
+        <div className="fixed top-4 left-2.5 xs:left-4">
         <Link href={link} target={newTab ? "_blank" : "_self"} 
      onMouseEnter={() => setIsHovered(true)} // Set hover to true when mouse enters
      onMouseLeave={() => setIsHovered(false)}
         className="text-foreground rounded-full flex items-center justify-center
-        custom-bg shadow-glass-inset hover:shadow-glass-sm fixed top-8 left-8
+        custom-bg shadow-glass-inset hover:shadow-glass-sm
          border border-solid border-accent/30
         backdrop-blur-[6px]
         " 
@@ -32,6 +32,6 @@ export const HomeBtn = () => {
                 }
             </span>
             </Link>
-    </>)
+    </div>)
 
 }
