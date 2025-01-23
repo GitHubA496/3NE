@@ -1,23 +1,82 @@
 "use client"
 import {BtnList} from  "../../data"
+import useScreenSize from "../hooks/useScreenSize"
+import ResponsiveComponent from "../ResponsiveComponent"
 import { NavButton } from "./NavButton"
+import { motion } from "framer-motion"
+
+const container={
+hidden:{opacity:0},
+show:{
+    opacity:1,
+    transition:{
+        staggerChildren:0.7,
+    }
+}
+}
+
+
 
 export const Navigation=()=>{
     const angleIncrement = 360 /BtnList.length
+
+    const size = useScreenSize();
+
+    const isLarge = size >=1024
+    const isMedium = size >= 768
+
+
     return(
         <div className="w-full fixed h-screen flex items-center justify-center ">
-        <div className="w-max flex items-center justify-center relative hover:pause animate-spin-slow group">
+    <ResponsiveComponent>
+{
+({size})=> {
+       return size && size>=480 ? (
+       <motion.div
+       variants={container}
+       initial="hidden"
+       animate="show"
+       className="w-max flex items-center justify-center relative hover:pause animate-spin-slow group">
             {
                 BtnList.map((item,index)=> {
-                const angleRad = (index * angleIncrement * Math.PI)/180
-                const radius = 'calc(20vw - 1rem)'
-                const x = `calc(${radius}*${Math.cos(angleRad)})`
-                const y = `calc(${radius}*${Math.sin(angleRad)})`
-                return <NavButton key ={index} x= {x} y={y} className="absolute" label={item.label} link={item.link} icon={item.icon} newTab={item.newTab} />
-                // return  <button className="absolute" style={{transform:` translate(${x},${y})`}} key={index}>{item.label}</button>
-              })
+                    const angleRad = (index * angleIncrement * Math.PI)/180
+                    const radius = isLarge?'calc(20vw - 1rem)':isMedium?'calc(30vw - 1rem)':'calc(40vw - 1rem)'
+                    const x = `calc(${radius}*${Math.cos(angleRad)})`
+                    const y = `calc(${radius}*${Math.sin(angleRad)})`
+                    return <NavButton key ={index} x= {x} y={y} className="absolute" label={item.label} link={item.link} icon={item.icon} newTab={item.newTab} />
+                })
             }
-            </div>       
+            </ motion.div>
+            ):(
+                <>
+        
+                <motion.div
+       variants={container}
+       initial="hidden"
+       animate="show" 
+                className="w-full px-2.5 xs:p-0 ws:w-max flex flex-col items-start xs:items-center space-y-6 justify-center relative ">
+            {
+                BtnList.slice(0,BtnList.length/2).map((item,index)=> {
+                    return <NavButton key ={index} x= {0} y={0} className="absolute" label={item.label} link={item.link} icon={item.icon} newTab={item.newTab} />
+                })
+            }
+            </motion.div>
+            <motion.div
+       variants={container}
+       initial="hidden"
+       animate="show"
+        className="w-full px-2.5 xs:w-max flex flex-col items-end xs:items-center space-y-6 justify-center relative ">
+            {
+                BtnList.slice(BtnList.length/2,BtnList.length).map((item,index)=> {
+                    return <NavButton key ={index} x= {0} y={0} className="absolute" label={item.label} link={item.link} icon={item.icon} newTab={item.newTab} labelDirection={"left"} />
+                })
+            }
+            </motion.div>
+                </>
+            )       
+        
+            }}
+    </ResponsiveComponent>
         </div>
     )
 }
